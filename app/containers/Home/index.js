@@ -13,7 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import './index.scss'
+import './style.scss'
 import {accDiv,accSub} from '../../util/arithmetic'
 
 const styles = theme => ({
