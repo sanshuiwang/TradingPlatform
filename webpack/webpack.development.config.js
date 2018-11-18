@@ -86,21 +86,24 @@ module.exports = {
           {
             loader: "image-webpack-loader",
             options: {
-              gifsicle: {
-                interlaced: false
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+              mozjpeg: {
+                progressive: true,
+                quality: 65
               },
+              // optipng.enabled: false will disable optipng
               optipng: {
-                optimizationLevel: 7
+                enabled: false
               },
               pngquant: {
                 quality: "65-90",
                 speed: 4
               },
-              mozjpeg: {
-                progressive: true,
-                quality: 65
+              gifsicle: {
+                interlaced: false
               },
-              // Specifying webp here will create a WEBP version of your JPG/PNG images
+              // the webp option will enable WEBP
               webp: {
                 quality: 75
               }
@@ -131,11 +134,17 @@ module.exports = {
     hot: true, // 启用 webpack 的模块热替换特性
     port: 20001,
     host:'0.0.0.0',
+    proxy: {
+        "/exchange/*": {
+            "target": "https://www.binance.co",
+            "changeOrigin": true
+        }
+    }
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack4-GO",
+      title: "Trading Platform",
       template: "../app/index.temp.html",
       favicon: "../public/favicon.ico"
     }),

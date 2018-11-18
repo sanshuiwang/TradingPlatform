@@ -105,21 +105,24 @@ module.exports = {
           {
             loader: "image-webpack-loader",
             options: {
-              gifsicle: {
-                interlaced: false
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+              mozjpeg: {
+                progressive: true,
+                quality: 65
               },
+              // optipng.enabled: false will disable optipng
               optipng: {
-                optimizationLevel: 7
+                enabled: false
               },
               pngquant: {
                 quality: "65-90",
                 speed: 4
               },
-              mozjpeg: {
-                progressive: true,
-                quality: 65
+              gifsicle: {
+                interlaced: false
               },
-              // Specifying webp here will create a WEBP version of your JPG/PNG images
+              // the webp option will enable WEBP
               webp: {
                 quality: 75
               }
@@ -149,7 +152,7 @@ module.exports = {
     new webpack.BannerPlugin("Copyright by 768188667@qq.com"),
 
     new HtmlWebpackPlugin({
-      title: "Webpack4-GO",
+      title: "Trading Platform",
       template: "../app/index.temp.html",
       favicon: "../public/favicon.ico"
     }),
