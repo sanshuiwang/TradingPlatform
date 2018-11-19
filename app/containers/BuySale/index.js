@@ -71,6 +71,8 @@ class BuySale extends React.Component {
     this.wbs.close();
     this.wbs.onclose = (event) => {
       this.setState({toggle: false});
+      console.log('websocket 断开: ' + event.code + ' ' + event.reason + ' ' + event.wasClean)
+      console.log(event)
     };
   }
 
