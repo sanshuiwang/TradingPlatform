@@ -1,6 +1,16 @@
 import { getCoinList } from "../action";
 import reducer, { initState } from "../reducer";
 
+test("result Keys To Contain State keys",() => {
+  const state = initState
+  const stateKeys = Object.keys(state)
+  const result = reducer(state, getCoinList())
+  const resultKeys = Object.keys(result)
+
+  expect(result).not.toBeNull()
+  expect(resultKeys).toEqual(stateKeys)
+})
+
 test("Get Coin List", () => {
   const state = initState;
   const expected = Object.keys({
@@ -33,6 +43,7 @@ test("Get Coin List", () => {
   });
 
   const result = reducer(state, getCoinList());
+  
   const rcL = result.coinList.length;
   if (rcL > 0) {
     const coinListItemKeys = Object.keys(result.coinList[0]);
