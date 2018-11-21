@@ -24,7 +24,7 @@ const createComponent = (component) => (props) => (
 const getRouter = () => (
     <Switch>
         <Route exact path="/" component={createComponent(Home)} />
-        <Route exact path="/BuySale" component={createComponent(BuySale)} />
+        <Route exact path="/BuySale/:coin" component={createComponent(BuySale)} />
         <Route exact path="/Hello" component={createComponent(Hello)} />
         <Route exact path="/Test" component={createComponent(Test)} />
     </Switch>

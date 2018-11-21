@@ -34,7 +34,7 @@ class Home extends React.Component {
 
   render() {
     const { classes, coinList } = this.props
-
+    
     const tableTitle = [
       '市场',
       '币种',
@@ -65,7 +65,7 @@ class Home extends React.Component {
           {
             coinList.map((coinListItem,index) => {
               return (
-                <TableRow key={index} className='rowStyle' onClick={() => this.toBuySale()}>
+                <TableRow key={index} className='rowStyle' onClick={() => this.toBuySale(coinListItem)}>
                   <TableCell component="th" scope="row">
                     {`${coinListItem.baseAsset}/${coinListItem.quoteAsset}`}
                   </TableCell>
@@ -90,8 +90,8 @@ class Home extends React.Component {
   }
 
   
-  toBuySale = () => {
-    this.props.history.push("/BuySale")
+  toBuySale = (coinListItem) => {
+    this.props.history.push(`/BuySale/${coinListItem.baseAsset}_${coinListItem.quoteAsset}`)
   }
 
 }
